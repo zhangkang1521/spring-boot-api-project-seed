@@ -1,6 +1,7 @@
 package com.company.project.web;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
+import com.company.project.core.ServiceException;
 import com.company.project.model.User;
 import com.company.project.service.UserService;
 import com.github.pagehelper.PageHelper;
@@ -40,6 +41,9 @@ public class UserController {
     @GetMapping("/{id}")
     public Result detail(@PathVariable Integer id) {
         User user = userService.findById(id);
+        if (true) {
+            throw new ServiceException("xx");
+        }
         return ResultGenerator.genSuccessResult(user);
     }
 
